@@ -9,12 +9,14 @@ public class Veterinary{
 	//Atributes
 	private String name;
 	private Room[] room;//###
+	private double totalMoney;//!!!
 	private ArrayList<Owner> owner;//###
 	
 	//Constructor
 	public Veterinary(String name){
 		
 		this.name=name;
+		this.totalMoney=0;
 		
 		this.room=new Room[roomQuantity];//###
 		
@@ -31,14 +33,15 @@ public class Veterinary{
 		message+="\n 1.Registrar a un cliente";
 		message+="\n 2.Registrar a una mascota";
 		message+="\n 3.Hospitalizar una mascota";
-		message+="\n 4.Consultar el numero de mini cuarto en el que se encuentra una mascota";
-		message+="\n 5.Mostrar informe de las historias clinicas de los animales hospitalizados";
-		message+="\n 6.Consultar el historial de historias clinicas de una mascota";
-		message+="\n 7.Dar de alta a una mascota";
-		message+="\n 8.Consultar datos del cliente a traves de la mascota";
-		message+="\n 9.Consultar datos del cliente a traves del nombre del cliente";
-		message+="\n 10.Total de ingresos por hospitalizaciones";
-		message+="\n 11.Salir\n~";
+		message+="\n 4.Mostrar los mini cuartos vacios";
+		message+="\n 5.Consultar el numero de mini cuarto en el que se encuentra una mascota";
+		message+="\n 6.Mostrar informe de las historias clinicas de los animales hospitalizados";
+		message+="\n 7.Consultar el historial de historias clinicas de una mascota";
+		message+="\n 8.Dar de alta a una mascota";
+		message+="\n 9.Consultar datos del cliente a traves de la mascota";
+		message+="\n 10.Consultar datos del cliente a traves del nombre del cliente";
+		message+="\n 11.Total de ingresos por hospitalizaciones";
+		message+="\n 12.Salir\n~";
 		
 		return message;
 		
@@ -52,42 +55,42 @@ public class Veterinary{
 			
 			if(room[0].getPet()==null){
 				
-				message+="\n 1.Room 1";
+				message+="\n 1.Mini Cuarto 1";
 				
 			}
 			if(room[1].getPet()==null){
 				
-				message+="\n 2.Room 2";
+				message+="\n 2.Mini Cuarto 2";
 				
 			}
 			if(room[2].getPet()==null){
 				
-				message+="\n 3.Room 3";
+				message+="\n 3.Mini Cuarto 3";
 				
 			}
 			if(room[3].getPet()==null){
 				
-				message+="\n 4.Room 4";
+				message+="\n 4.Mini Cuarto 4";
 				
 			}
 			if(room[4].getPet()==null){
 				
-				message+="\n 5.Room 5";
+				message+="\n 5.Mini Cuarto 5";
 				
 			}
 			if(room[5].getPet()==null){
 				
-				message+="\n 6.Room 6";
+				message+="\n 6.Mini Cuarto 6";
 				
 			}
 			if(room[6].getPet()==null){
 				
-				message+="\n 7.Room 7";
+				message+="\n 7.Mini Cuarto 7";
 				
 			}
 			if(room[7].getPet()==null){
 				
-				message+="\n 8.Room 8";
+				message+="\n 8.Mini Cuarto 8";
 				
 			}
 			
@@ -96,42 +99,42 @@ public class Veterinary{
 			
 			if(room[0].getPet()!=null){
 				
-				message+="\n 1.Room 1 ("+room[0].getPet().getName()+")";
+				message+="\n 1.Mini Cuarto 1 ("+room[0].getPet().getName()+")";
 				
 			}
 			if(room[1].getPet()!=null){
 				
-				message+="\n 2.Room 2 ("+room[1].getPet().getName()+")";
+				message+="\n 2.Mini Cuarto 2 ("+room[1].getPet().getName()+")";
 				
 			}
 			if(room[2].getPet()!=null){
 				
-				message+="\n 3.Room 3 ("+room[2].getPet().getName()+")";
+				message+="\n 3.Mini Cuarto 3 ("+room[2].getPet().getName()+")";
 				
 			}
 			if(room[3].getPet()!=null){
 				
-				message+="\n 4.Room 4 ("+room[3].getPet().getName()+")";
+				message+="\n 4.Mini Cuarto 4 ("+room[3].getPet().getName()+")";
 				
 			}
 			if(room[4].getPet()!=null){
 				
-				message+="\n 5.Room 5 ("+room[4].getPet().getName()+")";
+				message+="\n 5.Mini Cuarto 5 ("+room[4].getPet().getName()+")";
 				
 			}
 			if(room[5].getPet()!=null){
 				
-				message+="\n 6.Room 6 ("+room[5].getPet().getName()+")";
+				message+="\n 6.Mini Cuarto 6 ("+room[5].getPet().getName()+")";
 				
 			}
 			if(room[6].getPet()!=null){
 				
-				message+="\n 7.Room 7 ("+room[6].getPet().getName()+")";
+				message+="\n 7.Mini Cuarto 7 ("+room[6].getPet().getName()+")";
 				
 			}
 			if(room[7].getPet()!=null){
 				
-				message+="\n 8.Room 8 ("+room[7].getPet().getName()+")";
+				message+="\n 8.Mini Cuarto 8 ("+room[7].getPet().getName()+")";
 				
 			}
 			
@@ -142,50 +145,6 @@ public class Veterinary{
 	}
 	
 	//Do
-	public String createOwner(String ownerName, String ownerId, String ownerAddress, int ownerPhone, String petName, char petType, int petAge, double petWeight, int dayIn, int monthIn, int yearIn){
-		
-		String message="Se a creado el usuario exitosamente";
-		
-		Date petDateIn=new Date(dayIn, monthIn, yearIn);
-		
-		Record petRecord=new Record(false, "", "", petDateIn, ownerName, ownerId, ownerAddress, ownerPhone, petName, petType, petAge, petWeight);
-		Pet pet=new Pet(petName, petType, petAge, petWeight, petRecord);
-		
-		Owner profile=new Owner(ownerName, ownerId, ownerAddress, ownerPhone, pet);
-		owner.add(profile);
-		
-		return message;
-		
-	}
-	
-	public String createPet(String ownerName, String name, char type, int age, double weight, int dayIn, int monthIn, int yearIn){
-		
-		String message="No se encontro el usuario";
-		
-		Date dateIn=new Date(dayIn, monthIn, yearIn);
-		
-		int ownerSize=owner.size();
-		
-		for(int i=0; i<ownerSize; i++){
-			
-			String ownerNameI=owner.get(i).getName();
-			
-			if(ownerNameI.equals(ownerName)){
-				
-				Record record=new Record(false, "", "", dateIn, owner.get(i).getName(), owner.get(i).getId(), owner.get(i).getAddress(), owner.get(i).getPhone(), name, type, age, weight);
-				
-				Pet pet=new Pet(name, type, age, weight, record);
-				
-				message=owner.get(i).createPet(pet);
-				
-			}
-			
-		}
-		
-		return message;
-		
-	}
-	
 	public boolean emptyRoom(int roomNumber){
 		
 		boolean empty=false;
@@ -205,7 +164,51 @@ public class Veterinary{
 		
 	}
 	
-	public String hospitalizate(String ownerName, String petName, int roomNumber){
+	public String createOwner(String ownerName, String ownerId, String ownerAddress, int ownerPhone, String petName, char petType, int petAge, double petWeight, int dayIn, int monthIn, int yearIn){
+		
+		String message="Se a creado el usuario exitosamente";
+		
+		Date petDateIn=new Date(dayIn, monthIn, yearIn);
+		
+		Record petRecord=new Record(false, "", "", petDateIn, ownerName, ownerId, ownerAddress, ownerPhone, petName, petType, petAge, petWeight);
+		Pet pet=new Pet(petName, petType, petAge, petWeight, petRecord);
+		
+		Owner profile=new Owner(ownerName, ownerId, ownerAddress, ownerPhone, pet);
+		owner.add(profile);
+		
+		return message;
+		
+	}//R1
+	
+	public String createPet(String ownerId, String name, char type, int age, double weight, int dayIn, int monthIn, int yearIn){
+		
+		String message="No se encontro el usuario";
+		
+		Date dateIn=new Date(dayIn, monthIn, yearIn);
+		
+		int ownerSize=owner.size();
+		
+		for(int i=0; i<ownerSize; i++){
+			
+			String ownerIdI=owner.get(i).getName();
+			
+			if(ownerIdI.equals(ownerId)){
+				
+				Record record=new Record(false, "", "", dateIn, owner.get(i).getName(), owner.get(i).getId(), owner.get(i).getAddress(), owner.get(i).getPhone(), name, type, age, weight);
+				
+				Pet pet=new Pet(name, type, age, weight, record);
+				
+				message=owner.get(i).createPet(pet);
+				
+			}
+			
+		}
+		
+		return message;
+		
+	}//R2
+	
+	public String hospitalizate(String ownerId, String petName, int roomNumber){
 		
 		String message="No se encontro al dueno o a la mascota digitada";
 		
@@ -215,9 +218,9 @@ public class Veterinary{
 		
 		for(int i=0; i<ownerSize; i++){
 			
-			String ownerNameI=owner.get(i).getName();
+			String ownerIdI=owner.get(i).getId();
 			
-			if(ownerNameI.equals(ownerName)){
+			if(ownerIdI.equals(ownerId)){
 				
 				int petSize=owner.get(i).getPet().size();
 				
@@ -251,7 +254,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R1
+	}//R3
 	
 	public String createRecord(String symptom, String diagnostic, int dayIn, int monthIn, int yearIn, int roomNumber){
 		
@@ -284,7 +287,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R1
+	}//R3
 	
 	public String addMedicine(String name, String dose, double periodicity, double price, int roomNumber){
 		
@@ -311,48 +314,17 @@ public class Veterinary{
 		return message;
 		
 		
-	}//R1
+	}//R3
 	
-	public String dischargePet(int roomNumber){
+	public String showEmptyRooms(){
 		
-		String message="No se encontro a al dueno o a la mascota";
+		String message="Los mini cuartos disponibles son:";
 		
-		if(!emptyRoom(roomNumber-1)){
+		for(int i=1; i<=8; i++){
 			
-			int ownerSize=owner.size();
-			
-			for(int i=0; i<ownerSize; i++){
+			if(emptyRoom(i-1)){
 				
-				String ownerName=owner.get(i).getName();
-				
-				if(ownerName.equals(room[roomNumber-1].getActualRecord().getOwnerName())){
-					
-					int petSize=owner.get(i).getPet().size();
-					
-					for(int j=0; j<petSize;j++){
-						
-						String petName=owner.get(i).getPet().get(j).getName();
-						
-						if(petName.equals(room[roomNumber-1].getActualRecord().getPetName())){
-							
-							ArrayList<Record> newRecords=owner.get(i).getPet().get(j).getRecord();
-							
-							Record newRecord=room[roomNumber-1].getActualRecord();
-							newRecord.setStatus(false);
-							newRecords.add(newRecord);
-							
-							room[roomNumber-1].setActualRecord(null);
-							room[roomNumber-1].setPet(null);
-							
-							owner.get(i).getPet().get(j).setRecord(newRecords);
-							
-							message="Se ha dado de alta a la mascota";
-							
-						}
-						
-					}
-					
-				}
+				message+="\nMini Cuarto "+i;
 				
 			}
 			
@@ -360,7 +332,27 @@ public class Veterinary{
 		
 		return message;
 		
-	}
+	}//R4
+	
+	public String showPetRoomNumber(String petName){
+		
+		String message="Esta en el cuarto";
+		
+		for(int i=0; i<roomQuantity; i++){
+			
+			String petNameI=room[i].getPet().getName();
+			
+			if(petNameI.equals(petName)){
+				
+				message+=" "+room[i].getNumber();
+				
+			}
+			
+		}
+		
+		return message;
+		
+	}//R5
 	
 	public String showAllActualRecord(){
 		
@@ -378,21 +370,159 @@ public class Veterinary{
 		
 		return message;
 		
-	}
+	}//R6
 	
-	public String showPetRoomNumber(String petName){
+	public String showPetRecords(String id, String name){
 		
-		String message="The room number";
+		String message="No se encontro a la mascota";
 		
-		for(int i=0; i<roomQuantity; i++){
+		int ownerSize=owner.size();
+		
+		for(int i=0; i<ownerSize; i++){
 			
-			String petNameI=room[i].getPet().getName();
+			String ownerId=owner.get(i).getId();
 			
-			if(petNameI.equals(petName)){
+			if(ownerId.equals(id)){
 				
-				message+=" "+room[i].getNumber();
+				int petSize=owner.get(i).getPet().size();
+				
+				for(int j=0; j<petSize;j++){
+					
+					String petName=owner.get(i).getPet().get(j).getName();
+					
+					if(petName.equals(name)){
+						
+						message="Historias medicas de la mascota "+name;
+						
+						int recordSize=owner.get(i).getPet().get(j).getRecord().size();
+						
+						for(int l=1; l<recordSize; l++){
+							
+							message+="\n"+owner.get(i).getPet().get(j).getRecord().get(l).printRecord();
+							
+						}
+						
+					}
+					
+				}
 				
 			}
+			
+		}
+		
+		return message;
+		
+	}//R7
+	
+	public String dischargePet(int roomNumber, int dayOut, int monthOut, int yearOut){
+		
+		String message="Este cuarto esta vacio";
+		
+		if(!emptyRoom(roomNumber-1)){
+			
+			int ownerSize=owner.size();
+			
+			for(int i=0; i<ownerSize; i++){
+				
+				String ownerId=owner.get(i).getId();
+				
+				if(ownerId.equals(room[roomNumber-1].getActualRecord().getOwnerId())){
+					
+					int petSize=owner.get(i).getPet().size();
+					
+					for(int j=0; j<petSize;j++){
+						
+						String petName=owner.get(i).getPet().get(j).getName();
+						
+						if(petName.equals(room[roomNumber-1].getPet().getName())){
+							
+							Date dateOut=new Date(dayOut, monthOut, yearOut);
+							
+							ArrayList<Record> newRecords=owner.get(i).getPet().get(j).getRecord();
+							
+							Record newRecord=room[roomNumber-1].getActualRecord();
+							newRecord.setStatus(false);
+							newRecord.setDateOut(dateOut);
+							newRecords.add(newRecord);
+							
+							room[roomNumber-1].setActualRecord(null);
+							room[roomNumber-1].setPet(null);
+							
+							owner.get(i).getPet().get(j).setRecord(newRecords);
+							
+							this.totalMoney+=newRecord.calculateHospitalizationCost();
+							
+							message="Son un total de $"+newRecord.calculateHospitalizationCost();
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		return message;
+		
+	}//R8
+	
+	public String showOwnerDataPet(String name){
+		
+		String firstMessage="";
+		String message="";
+		
+		int ownerSize=owner.size();
+		
+		for(int i=0; i<ownerSize; i++){
+			
+			int petSize=owner.get(i).getPet().size();
+			
+			for(int j=0; j<petSize; j++){
+				
+				String petName=owner.get(i).getPet().get(j).getName();
+				
+				if(petName.equals(name)){
+					
+					message+=owner.get(i).getPet().get(j).getRecord().get(0).showOwnerData();
+					
+				}
+				
+			}
+			
+		}
+		if(message.equals(firstMessage)){
+			
+			message="No se encontro la mascota";
+			
+		}
+		
+		return message;
+		
+	}
+	
+	public String showOwnerDataOwner(String name){
+		
+		String firstMessage="";
+		String message="";
+		
+		int ownerSize=owner.size();
+		
+		for(int i=0; i<ownerSize; i++){
+			
+			String ownerName=owner.get(i).getName();
+			
+			if(ownerName.equals(name)){
+				
+				message+=owner.get(i).getPet().get(0).getRecord().get(0).showOwnerData();;
+				
+			}
+			
+		}
+		if(message.equals(firstMessage)){
+			
+			message="No se encontro al dueno";
 			
 		}
 		
@@ -419,6 +549,12 @@ public class Veterinary{
 		
 	}
 	
+	public double getTotalMoney(){
+		
+		return totalMoney;
+		
+	}//R11
+	
 	//Sets
 	public void setName(String name){
 		
@@ -435,6 +571,12 @@ public class Veterinary{
 	public void setOwner(ArrayList<Owner> owner){
 		
 		this.owner=owner;
+		
+	}
+	
+	public void setTotalMoney(double totalMoney){
+		
+		this.totalMoney=totalMoney;
 		
 	}
 	

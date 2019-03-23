@@ -20,7 +20,9 @@ public class Main{
 		
 		int option1=0;
 		
-		String profileOwnerName;
+		String profileOwnerId;
+		String profilePetName;
+		int roomNumber;
 		
 		boolean run=true;
 		
@@ -102,10 +104,10 @@ public class Main{
 				
 				case 2:
 					
-					//OwnerName
-					System.out.print("\nDigita el nombre del cliente\n~");
+					//OwnerId
+					System.out.print("\nDigita el Id del cliente\n~");
 					
-					profileOwnerName=s.next();
+					profileOwnerId=s.next();
 					s.nextLine();
 					
 					//PetName
@@ -145,29 +147,29 @@ public class Main{
 					s.nextLine();
 					
 					//Create Pet Profile
-					System.out.print(veterinary.createPet(profileOwnerName, name, type, age, weight, petDay, petMonth, petYear));
+					System.out.print(veterinary.createPet(profileOwnerId, name, type, age, weight, petDay, petMonth, petYear));
 					
 				break;
 				
 				case 3:
 					
 					//Hopitalizate
-					//OwnerName
-					System.out.print("\nDigita el nombre del cliente\n~");
+					//OwnerId
+					System.out.print("\nDigita el Id del cliente\n~");
 					
-					profileOwnerName=s.next();
+					profileOwnerId=s.next();
 					s.nextLine();
 					
 					//PetName
 					System.out.print("\nDigita el nombre de su mascota\n~");
 					
-					String profilePetName=s.next();
+					profilePetName=s.next();
 					s.nextLine();
 					
 					//RoomNumber
 					System.out.print(veterinary.showRoom(true));//Hacer un showRoomMenu
 					
-					int roomNumber=askRoom(s);
+					roomNumber=askRoom(s);
 					//...
 					
 					//CreateRecord
@@ -197,54 +199,137 @@ public class Main{
 					s.nextLine();
 					//...
 					
-					System.out.print(veterinary.hospitalizate(profileOwnerName, profilePetName, roomNumber));
-					System.out.print(veterinary.createRecord(symptom, diagnostic, hospitalizationDay, hospitalizationMonth, hospitalizationYear, roomNumber));		
+					//AddMedicines
+					System.out.print("\nDigita cuantas medicinas deaseas resetar\n~");
+					int medicineQuantity=s.nextInt();
+					s.nextLine();
+					
+					System.out.print(veterinary.hospitalizate(profileOwnerId, profilePetName, roomNumber));
+					System.out.print("\n"+veterinary.createRecord(symptom, diagnostic, hospitalizationDay, hospitalizationMonth, hospitalizationYear, roomNumber));
+					
+					for(int i=0; i<medicineQuantity; i++){
+						
+						System.out.print("\nDigita el nombre de la medicina #"+(i+1)+"\n~");
+						String medicineName=s.next();
+						s.nextLine();
+						
+						System.out.print("\nDigita la dosis resetada de la medicina #"+(i+1)+"\n~");
+						String medicineDose=s.next();
+						s.nextLine();
+						
+						System.out.print("\nDigita la frecuencia en horas de la medicina #"+(i+1)+"\n~");
+						double medicinePeriodicity=s.nextDouble();
+						s.nextLine();
+						
+						System.out.print("\nDigita el precio de la medicina #"+(i+1)+"\n~");
+						double medicinePrice=s.nextDouble();
+						s.nextLine();
+						
+						System.out.print(veterinary.addMedicine(medicineName, medicineDose, medicinePeriodicity, medicinePrice, roomNumber));
+						
+					}
+					//...
 					
 				break;
 				
 				case 4:
 					
-					
+					System.out.print(veterinary.showEmptyRooms());
 					
 				break;
 				
 				case 5:
 					
+					//PetName
+					System.out.print("\nDigita el nombre de la mascota\n~");
 					
+					profilePetName=s.next();
+					s.nextLine();
+					
+					System.out.print(veterinary.showPetRoomNumber(profilePetName));
 					
 				break;
 				
 				case 6:
 					
-					
+					System.out.print(veterinary.showAllActualRecord());
 					
 				break;
 				
 				case 7:
 					
+					//OwnerId
+					System.out.print("\nDigita el id del dueno de la mascota\n~");
 					
+					profileOwnerId=s.next();
+					s.nextLine();
+					
+					//PetName
+					System.out.print("\nDigita el nombre de la mascota\n~");
+					
+					profilePetName=s.next();
+					s.nextLine();
+					
+					System.out.print(veterinary.showPetRecords(profileOwnerId, profilePetName));
 					
 				break;
 				
 				case 8:
 					
+					//Date
+					System.out.print("\nDigita el dia actual\n~");
+					int dayOut=s.nextInt();
+					s.nextLine();
 					
+					System.out.print("\nDigita el mes actual\n~");
+					int monthOut=s.nextInt();
+					s.nextLine();
+					
+					System.out.print("\nDigita el ano actual\n~");
+					int yearOut=s.nextInt();
+					s.nextLine();
+					//...
+					
+					//RoomNumber
+					System.out.print(veterinary.showRoom(false));//Hacer un showRoomMenu
+					
+					roomNumber=askRoom(s);
+					
+					System.out.print(veterinary.dischargePet(roomNumber, dayOut, monthOut, yearOut));
 					
 				break;
 				
 				case 9:
 					
+					//PetName
+					System.out.print("\nDigita el nombre de su mascota\n~");
 					
+					profilePetName=s.next();
+					s.nextLine();
+					
+					System.out.print(veterinary.showOwnerDataPet(profilePetName));
 					
 				break;
 				
 				case 10:
 					
+					//OwnerId
+					System.out.print("\nDigita el nombre del cliente\n~");
 					
+					String profileOwnerName=s.next();
+					s.nextLine();
+					
+					System.out.print(veterinary.showOwnerDataOwner(profileOwnerName));
 					
 				break;
 				
 				case 11:
+					
+					System.out.print("El dinero total obtenido por hospitalizaciones es: $"+veterinary.getTotalMoney());
+					
+				break;
+				
+				case 12:
 					
 					System.out.print("\nHasta Luego!!!");
 					run=false;
@@ -263,6 +348,7 @@ public class Main{
 		
 	}
 	
+	//Askers
 	public int askRoom(Scanner s){
 		
 		boolean run=true;

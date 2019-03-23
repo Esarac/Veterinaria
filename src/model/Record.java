@@ -50,6 +50,18 @@ public class Record{
 	public String printRecord(){
 		
 		String record="\n-----";
+		//Status
+		if(status){
+			
+			record+="\n Estado: ABIERTO";
+			
+		}
+		else{
+			
+			record+="\n Estado: CERRADO";
+			
+		}
+		record+="\n";
 		//DateIn
 		record+="\n Fecha:"+dateIn.getDay()+"/"+dateIn.getMonth()+"/"+dateIn.getYear();
 		record+="\n";
@@ -58,7 +70,7 @@ public class Record{
 		record+="\n  Nombre: "+ownerName;
 		record+="\n  Id: "+ownerId;
 		record+="\n  Direccion: "+ownerAddress;
-		record+="/n  Telefono: "+ownerPhone;
+		record+="\n  Telefono: "+ownerPhone;
 		record+="\n";
 		//Pet
 		record+="\n Mascota:";
@@ -83,16 +95,6 @@ public class Record{
 		record+="\n";
 		//Data
 		record+="\n Datos de la hospitalizacion:";
-		if(status){
-			
-			record+="\n  Estado: Abierto";
-			
-		}
-		else{
-			
-			record+="\n  Estado: Cerrado";
-			
-		}
 		record+="\n  Sintomas:";
 		record+="\n  "+symptom;
 		record+="\n  Diagnostico:";
@@ -111,8 +113,11 @@ public class Record{
 			
 		}
 		record+="\n";
+		//Out
 		if(dateOut!=null){
 			
+			record+="\n Salida: "+dateOut.getDay()+"/"+dateOut.getMonth()+"/"+dateOut.getYear();
+			record+="\n";
 			record+="\n Costo total de la hospitalizacion: $"+calculateHospitalizationCost();
 			
 		}
@@ -122,7 +127,20 @@ public class Record{
 		
 	}
 	
-	//Do
+	public String showOwnerData(){
+		
+		String data="\n-----";
+		data+="\n Datos del dueno:";
+		data+="\n  Nombre: "+ownerName;
+		data+="\n  Id: "+ownerId;
+		data+="\n  Direccion: "+ownerAddress;
+		data+="\n  Telefono: "+ownerPhone;
+		data+="\n-----\n";
+		
+		return data;
+		
+	}
+	
 	public double calculateHospitalizationCost(){//Termiar
 		
 		double cost=0;
