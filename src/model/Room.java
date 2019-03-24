@@ -6,15 +6,13 @@ public class Room{
 	private int number;
 	private Pet pet;
 	private Record actualRecord;
-	private Date actualDate;
 	
 	//Constructor
-	public Room(int number, Date actualDate){
+	public Room(int number){
 		
 		this.number=number;
 		this.pet=null;
 		this.actualRecord=null;
-		this.actualDate=actualDate;
 		
 	}
 	
@@ -37,12 +35,6 @@ public class Room{
 		
 	}
 	
-	public Date getActualDate(){
-		
-		return actualDate;
-		
-	}
-	
 	//Sets
 	public void setNumber(int number){
 		
@@ -59,12 +51,6 @@ public class Room{
 	public void setActualRecord(Record actualRecord){
 		
 		this.actualRecord=actualRecord;
-		
-	}
-	
-	public void setActualDate(Date actualDate){
-		
-		this.actualDate=actualDate;
 		
 	}
 	

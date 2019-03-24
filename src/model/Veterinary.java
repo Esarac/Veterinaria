@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Veterinary{
 	
 	//Constatants
-	private final static int roomQuantity=8;
+	public static final int ROOM_QUANTITY=8;
 	
 	//Atributes
 	private String name;
@@ -18,7 +18,7 @@ public class Veterinary{
 		this.name=name;
 		this.totalMoney=0;
 		
-		this.room=new Room[roomQuantity];//###
+		this.room=new Room[ROOM_QUANTITY];//###
 		
 		this.owner=new ArrayList<Owner>();
 		
@@ -26,9 +26,9 @@ public class Veterinary{
 	//Menu
 	public String showMenu(){
 		
-		String message="\n-----";
+		String message="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		message+="\nVeterinaria "+name;
-		message+="\n-----";
+		message+="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		message+="\nBienvenido a la aplicacion SmartPet, Seleccione una opcion:";
 		message+="\n 1.Registrar a un cliente";
 		message+="\n 2.Registrar a una mascota";
@@ -41,7 +41,9 @@ public class Veterinary{
 		message+="\n 9.Consultar datos del cliente a traves de la mascota";
 		message+="\n 10.Consultar datos del cliente a traves del nombre del cliente";
 		message+="\n 11.Total de ingresos por hospitalizaciones";
-		message+="\n 12.Salir\n~";
+		message+="\n 12.Salir";
+		message+="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
+		message+="\n~";
 		
 		return message;
 		
@@ -139,6 +141,7 @@ public class Veterinary{
 			}
 			
 		}
+		message+="\n~";
 		
 		return message;
 		
@@ -190,7 +193,7 @@ public class Veterinary{
 		
 		for(int i=0; i<ownerSize; i++){
 			
-			String ownerIdI=owner.get(i).getName();
+			String ownerIdI=owner.get(i).getId();
 			
 			if(ownerIdI.equals(ownerId)){
 				
@@ -318,6 +321,7 @@ public class Veterinary{
 	
 	public String showEmptyRooms(){
 		
+		String firstMessage="Los mini cuartos disponibles son:";
 		String message="Los mini cuartos disponibles son:";
 		
 		for(int i=1; i<=8; i++){
@@ -329,6 +333,11 @@ public class Veterinary{
 			}
 			
 		}
+		if(message.equals(firstMessage)){
+			
+			message="No hay cuartos disponibles";
+			
+		}
 		
 		return message;
 		
@@ -336,17 +345,27 @@ public class Veterinary{
 	
 	public String showPetRoomNumber(String petName){
 		
-		String message="Esta en el cuarto";
+		String firstMessage="Esta en el cuarto:";
+		String message="Esta en el cuarto:";
 		
-		for(int i=0; i<roomQuantity; i++){
+		for(int i=0; i<ROOM_QUANTITY; i++){
 			
-			String petNameI=room[i].getPet().getName();
-			
-			if(petNameI.equals(petName)){
+			if(room[i].getPet()!=null){
 				
-				message+=" "+room[i].getNumber();
+				String petNameI=room[i].getPet().getName();
+				
+				if(petNameI.equals(petName)){
+					
+					message+=" "+room[i].getNumber();
+					
+				}
 				
 			}
+			
+		}
+		if(message.equals(firstMessage)){
+			
+			message="No se encontro a la mascota";
 			
 		}
 		
@@ -356,15 +375,21 @@ public class Veterinary{
 	
 	public String showAllActualRecord(){
 		
+		String firstMessage="Historias medicas de las mascotas hopitalizadas";
 		String message="Historias medicas de las mascotas hopitalizadas";
 		
-		for(int i=0; i<roomQuantity; i++){
+		for(int i=0; i<ROOM_QUANTITY; i++){
 			
 			if(room[i].getActualRecord()!=null){
 				
 				message+=room[i].getActualRecord().printRecord();
 				
 			}
+			
+		}
+		if(message.equals(firstMessage)){
+			
+			message="No hay mascotas hospitalizadas";
 			
 		}
 		
@@ -374,6 +399,7 @@ public class Veterinary{
 	
 	public String showPetRecords(String id, String name){
 		
+		String firstMessage="Historias medicas de la mascota "+name;
 		String message="No se encontro a la mascota";
 		
 		int ownerSize=owner.size();
@@ -407,6 +433,11 @@ public class Veterinary{
 				}
 				
 			}
+			
+		}
+		if(message.equals(firstMessage)){
+			
+			message="La mascota no tiene historias clinicas";
 			
 		}
 		

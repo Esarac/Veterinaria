@@ -6,7 +6,6 @@ public class Main{
 	
 	public static void main(String[]args){
 		
-		Scanner s=new Scanner(System.in);
 		Main m = new Main();
 		
 		Veterinary v=m.init();
@@ -40,8 +39,7 @@ public class Main{
 					//OwnerName
 					System.out.print("\nDigita el nombre del cliente\n~");
 					
-					String ownerName=s.next();
-					s.nextLine();
+					String ownerName=s.nextLine();
 					
 					//OwnerId
 					System.out.print("\nDigita el Identificador del cliente\n~");
@@ -52,8 +50,7 @@ public class Main{
 					//OwnerAddress
 					System.out.print("\nDigita la direccion del cliente\n~");
 					
-					String ownerAddress=s.next();
-					s.nextLine();
+					String ownerAddress=s.nextLine();
 					
 					//OwnerPhone
 					System.out.print("\nDigita el telefono del cliente\n~");
@@ -70,7 +67,7 @@ public class Main{
 					//PetType
 					System.out.print("\nElije el tipo de mascota:\n 1.Perro\n 2.Gato\n 3.Ave\n 4.Otro\n~");
 					
-					char petType=askPetType(s);
+					char petType=askPetType();
 					
 					//PetAge
 					System.out.print("\nDigita la edad en anos de la mascota\n~");
@@ -119,7 +116,7 @@ public class Main{
 					//PetType
 					System.out.print("\nElije el tipo de mascota:\n 1.Perro\n 2.Gato\n 3.Ave\n 4.Otro\n~");
 					
-					char type=askPetType(s);
+					char type=askPetType();
 					
 					//PetAge
 					System.out.print("\nDigita la edad en anos de la mascota\n~");
@@ -169,21 +166,19 @@ public class Main{
 					//RoomNumber
 					System.out.print(veterinary.showRoom(true));//Hacer un showRoomMenu
 					
-					roomNumber=askRoom(s);
+					roomNumber=askRoom();
 					//...
 					
 					//CreateRecord
 					//Symptoms
 					System.out.print("\nColoca los sintomas\n~");
 					
-					String symptom=s.next();
-					s.nextLine();
+					String symptom=s.nextLine();
 					
 					//Diagnostic
 					System.out.print("\nColoca el diagnostico\n~");
 					
-					String diagnostic=s.next();
-					s.nextLine();
+					String diagnostic=s.nextLine();
 					
 					//Date
 					System.out.print("\nDigita el dia de hospitalizacion\n~");
@@ -210,12 +205,10 @@ public class Main{
 					for(int i=0; i<medicineQuantity; i++){
 						
 						System.out.print("\nDigita el nombre de la medicina #"+(i+1)+"\n~");
-						String medicineName=s.next();
-						s.nextLine();
+						String medicineName=s.nextLine();
 						
 						System.out.print("\nDigita la dosis resetada de la medicina #"+(i+1)+"\n~");
-						String medicineDose=s.next();
-						s.nextLine();
+						String medicineDose=s.nextLine();
 						
 						System.out.print("\nDigita la frecuencia en horas de la medicina #"+(i+1)+"\n~");
 						double medicinePeriodicity=s.nextDouble();
@@ -293,7 +286,7 @@ public class Main{
 					//RoomNumber
 					System.out.print(veterinary.showRoom(false));//Hacer un showRoomMenu
 					
-					roomNumber=askRoom(s);
+					roomNumber=askRoom();
 					
 					System.out.print(veterinary.dischargePet(roomNumber, dayOut, monthOut, yearOut));
 					
@@ -316,8 +309,7 @@ public class Main{
 					//OwnerId
 					System.out.print("\nDigita el nombre del cliente\n~");
 					
-					String profileOwnerName=s.next();
-					s.nextLine();
+					String profileOwnerName=s.nextLine();
 					
 					System.out.print(veterinary.showOwnerDataOwner(profileOwnerName));
 					
@@ -349,7 +341,9 @@ public class Main{
 	}
 	
 	//Askers
-	public int askRoom(Scanner s){
+	public int askRoom(){
+		
+		Scanner s=new Scanner(System.in);
 		
 		boolean run=true;
 		int room=1;
@@ -378,7 +372,9 @@ public class Main{
 		
 	}
 	
-	public char askPetType(Scanner s){
+	public char askPetType(){
+		
+		Scanner s=new Scanner(System.in);
 		
 		boolean run=true;
 		char petType='O';
@@ -392,28 +388,28 @@ public class Main{
 				
 				case 1:
 					
-					petType='D';
+					petType=Pet.DOG;
 					run=false;
 					
 				break;	
 				
 				case 2:
 					
-					petType='C';
+					petType=Pet.CAT;
 					run=false;
 					
 				break;
 				
 				case 3:
 					
-					petType='B';
+					petType=Pet.BIRD;
 					run=false;
 					
 				break;
 				
 				case 4:
 					
-					petType='O';
+					petType=Pet.OTHER;
 					run=false;
 					
 				break;
@@ -435,16 +431,13 @@ public class Main{
 	
 	public Veterinary init(){
 		
-		//Dates
-		Date actualDate=new Date(1, 1, 2019);
-		
 		//Veterinary
-		Veterinary veterinary=new Veterinary("Johanios");
+		Veterinary veterinary=new Veterinary("Johanio's");
 		
 		//Rooms
 		for(int i=0; i<8; i++) {
 			
-			Room room=new Room((i), actualDate);
+			Room room=new Room((i+1));
 			veterinary.setRoom(i,room);
 			
 		}

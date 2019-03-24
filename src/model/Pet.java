@@ -3,6 +3,12 @@ import java.util.ArrayList;
 
 public class Pet{
 	
+	//Constants
+	public static final char DOG='D';
+	public static final char CAT='C';
+	public static final char BIRD='B';
+	public static final char OTHER='O';
+	
 	//Atributes
 	private String name;
 	private char type;

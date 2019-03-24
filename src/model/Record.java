@@ -49,7 +49,7 @@ public class Record{
 	//Do
 	public String printRecord(){
 		
-		String record="\n-----";
+		String record="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		//Status
 		if(status){
 			
@@ -75,14 +75,19 @@ public class Record{
 		//Pet
 		record+="\n Mascota:";
 		record+="\n  Nombre: "+petName;
-		if(petType=='D'){
+		if(petType==Pet.DOG){
 			
 			record+="\n  Animal: Perro";
 			
 		}
-		else if(petType=='C'){
+		else if(petType==Pet.CAT){
 			
 			record+="\n  Animal: Gato";
+			
+		}
+		else if(petType==Pet.BIRD){
+			
+			record+="\n  Animal: Ave";
 			
 		}
 		else{
@@ -108,7 +113,7 @@ public class Record{
 			record+="\n -Medicamento #"+(i+1);
 			record+="\n  Nombre: "+medicine.get(i).getName();
 			record+="\n  Dosis: "+medicine.get(i).getDose();
-			record+="\n  Frecuencia: "+medicine.get(i).getPeriodicity();
+			record+="\n  Frecuencia: Cada "+medicine.get(i).getPeriodicity()+" horas";
 			record+="\n  Costo: $"+medicine.get(i).getPrice();
 			
 		}
@@ -121,7 +126,7 @@ public class Record{
 			record+="\n Costo total de la hospitalizacion: $"+calculateHospitalizationCost();
 			
 		}
-		record+="\n-----";
+		record+="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		
 		return record;
 		
@@ -129,13 +134,13 @@ public class Record{
 	
 	public String showOwnerData(){
 		
-		String data="\n-----";
+		String data="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		data+="\n Datos del dueno:";
 		data+="\n  Nombre: "+ownerName;
 		data+="\n  Id: "+ownerId;
 		data+="\n  Direccion: "+ownerAddress;
 		data+="\n  Telefono: "+ownerPhone;
-		data+="\n-----\n";
+		data+="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
 		
 		return data;
 		
@@ -319,13 +324,13 @@ public class Record{
 			
 			dateTotal=(dateOutTotal-dateInTotal);
 			
-			for(int i=0; i<(medicine.size()-1); i++){
+			for(int i=0; i<(medicine.size()); i++){
 				
 				medicineCost+=medicine.get(i).getPrice();
 				
 			}
 			
-			if(petType=='D'){
+			if(petType==Pet.DOG){
 				
 				if(petWeight>0 && petWeight<=3){
 					
@@ -354,7 +359,7 @@ public class Record{
 				}
 				
 			}
-			else if(petType=='C'){
+			else if(petType==Pet.CAT){
 				
 				if(petWeight>0 && petWeight<=3){
 					
@@ -383,7 +388,7 @@ public class Record{
 				}
 				
 			}
-			else if(petType=='B'){
+			else if(petType==Pet.BIRD){
 				
 				if(petWeight>0 && petWeight<=3){
 					
