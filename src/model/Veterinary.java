@@ -531,7 +531,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}
+	}//R9
 	
 	public String showOwnerDataOwner(String name){
 		
@@ -559,7 +559,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}
+	}//R10
 	
 	//Gets
 	public String getName(){
