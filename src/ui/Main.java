@@ -442,6 +442,24 @@ public class Main{
 			
 		}
 		
+		//Additional Instantiation (Object Diagram)
+		//Owners+Pet(Bruno & Zelda)
+		veterinary.createOwner("Esteban Ariza", "A111", "Calle 15 #121-25", 4847803, "Bruno", Pet.DOG, 4, 12.5, 20, 1, 2019);
+		veterinary.createOwner("Mateo Valdez", "A112", "Carrera 2a #13-40", 3338031, "Zelda", Pet.CAT, 2, 4.8, 20, 1, 2019);
+		//Pet(Rocky)
+		veterinary.createPet("A111", "Rocky", Pet.OTHER, 1, 0.4, 20, 1, 2019);
+		//Hospitalizate(Zelda)
+		veterinary.hospitalizate("A112", "Zelda", 1);
+		veterinary.createRecord("Hemorragia en una pata", "Herida superficial", 21, 2, 2019, 1);
+		veterinary.addMedicine("Naproxeno", "0.5", 2, 2000, 1);
+		veterinary.dischargePet(1, 23, 2, 2019);
+		//Hospitalizate(Bruno)
+		veterinary.hospitalizate("A111", "Bruno", 5);
+		veterinary.createRecord("Diarrea y vomito", "Parvovirus Canino", 15, 3, 2019, 5);
+		veterinary.addMedicine("Dolex", "0.5", 12, 1000, 5);
+		veterinary.addMedicine("Smecta", "1", 48, 10000, 5);
+		//...
+		
 		return veterinary;
 		
 	}
