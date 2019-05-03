@@ -17,6 +17,10 @@ public class Date{
 	}
 	
 	//Gets
+	/**
+	*
+	*@return
+	*/
 	public int getDay(){
 		
 		return day;

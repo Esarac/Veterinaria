@@ -7,24 +7,25 @@ public class Record{
 	private boolean status;
 	private String symptom;
 	private String diagnostic;
-	
+	private ArrayList<Medicine> medicines;
 	private Date dateIn;
-	private Date dateOut;//!!!
-	
-	private ArrayList<Medicine> medicine;//###
-	
+	private Date dateOut;
+	//...
 	private String ownerName;
 	private String ownerId;
 	private String ownerAddress;
 	private int ownerPhone;
-	
+	//...
 	private String petName;
+	private String petId;
 	private char petType;
 	private int petAge;
 	private double petWeight;
+	private double petHeight;
+	//...
 	
 	//Constructor
-	public Record(boolean status, String symptom, String diagnostic, Date dateIn, String ownerName, String ownerId, String ownerAddress, int ownerPhone, String petName, char petType, int petAge, double petWeight){
+	public Record(boolean status, String symptom, String diagnostic, Date dateIn, String ownerName, String ownerId, String ownerAddress, int ownerPhone, String petName, String petId, char petType, int petAge, double petWeight, double petHeight){
 		
 		this.status=status;
 		this.symptom=symptom;
@@ -39,13 +40,16 @@ public class Record{
 		this.ownerPhone=ownerPhone;
 		
 		this.petName=petName;
+		this.petId=petId;
 		this.petType=petType;
 		this.petAge=petAge;
 		this.petWeight=petWeight;
+		this.petHeight=petHeight;
 		
-		this.medicine=new ArrayList<Medicine>();//###
+		this.medicines=new ArrayList<Medicine>();
 		
 	}
+	
 	//Do
 	public String printRecord(){
 		
@@ -75,6 +79,7 @@ public class Record{
 		//Pet
 		record+="\n Mascota:";
 		record+="\n  Nombre: "+petName;
+		record+="\n  Id: "+petId;
 		if(petType==Pet.DOG){
 			
 			record+="\n  Animal: Perro";
@@ -97,6 +102,7 @@ public class Record{
 		}
 		record+="\n  Edad: "+petAge+" anos";
 		record+="\n  Peso: "+petWeight+" Kg";
+		record+="\n  Estatura: "+petHeight+" m";
 		record+="\n";
 		//Data
 		record+="\n Datos de la hospitalizacion:";
@@ -107,14 +113,14 @@ public class Record{
 		record+="\n";
 		//Medicines
 		record+="\n Medicamentos Resetados";
-		for(int i=0; i<medicine.size(); i++){
+		for(int i=0; i<medicines.size(); i++){
 			
 			record+="\n";
 			record+="\n -Medicamento #"+(i+1);
-			record+="\n  Nombre: "+medicine.get(i).getName();
-			record+="\n  Dosis: "+medicine.get(i).getDose();
-			record+="\n  Frecuencia: Cada "+medicine.get(i).getPeriodicity()+" horas";
-			record+="\n  Costo: $"+medicine.get(i).getPrice();
+			record+="\n  Nombre: "+medicines.get(i).getName();
+			record+="\n  Dosis: "+medicines.get(i).getDose();
+			record+="\n  Frecuencia: Cada "+medicines.get(i).getPeriodicity()+" horas";
+			record+="\n  Costo: $"+medicines.get(i).getPrice();
 			
 		}
 		record+="\n";
@@ -146,7 +152,7 @@ public class Record{
 		
 	}
 	
-	public double calculateHospitalizationCost(){//Termiar
+	public double calculateHospitalizationCost(){
 		
 		double cost=0;
 		
@@ -324,9 +330,9 @@ public class Record{
 			
 			dateTotal=(dateOutTotal-dateInTotal);
 			
-			for(int i=0; i<(medicine.size()); i++){
+			for(int i=0; i<(medicines.size()); i++){
 				
-				medicineCost+=medicine.get(i).getPrice();
+				medicineCost+=medicines.get(i).getPrice();
 				
 			}
 			
@@ -456,6 +462,256 @@ public class Record{
 		
 	}
 	
+	public boolean itsOnTheWeek(Date actualDate){
+		
+		boolean truth=false;
+		
+		//Date
+		int dateTotal=0;
+		if(dateOut!=null){
+			
+			dateTotal=(dateOut.getYear()*365)+(dateOut.getDay());
+			switch(dateOut.getMonth()){
+				
+				case 1:
+					
+					dateTotal+=0;
+				
+				break;
+				
+				case 2:
+					
+					dateTotal+=31;
+				
+				break;
+				
+				case 3:
+					
+					dateTotal+=59;
+					
+				break;	
+				
+				case 4:
+					
+					dateTotal+=90;
+				
+				break;
+				
+				case 5:
+					
+					dateTotal+=120;
+					
+				break;
+				
+				case 6:
+				
+					dateTotal+=151;
+				
+				break;
+			
+				case 7:
+				
+					dateTotal+=181;
+				
+				break;
+			
+				case 8:
+				
+					dateTotal+=212;
+				
+				break;
+			
+				case 9:
+				
+					dateTotal+=243;
+				
+				break;
+			
+				case 10:
+				
+					dateTotal+=273;
+				
+				break;
+			
+				case 11:
+				
+					dateTotal+=304;
+				
+				break;
+			
+				case 12:
+				
+					dateTotal+=334;
+				
+				break;
+			
+				default:
+				
+					dateTotal+=0;
+				
+				break;
+			
+			}
+			
+		}
+		//...
+		
+		//actualDate
+		int actualDateTotal=(actualDate.getYear()*365)+(actualDate.getDay());
+		switch(actualDate.getMonth()){
+			
+			case 1:
+				
+				actualDateTotal+=0;
+			
+			break;
+			
+			case 2:
+				
+				actualDateTotal+=31;
+				
+			break;
+			
+			case 3:
+				
+				actualDateTotal+=59;
+				
+			break;	
+			
+			case 4:
+				
+				actualDateTotal+=90;
+				
+			break;
+			
+			case 5:
+				
+				actualDateTotal+=120;
+				
+			break;
+			
+			case 6:
+				
+				actualDateTotal+=151;
+				
+			break;
+			
+			case 7:
+				
+				actualDateTotal+=181;
+				
+			break;
+			
+			case 8:
+				
+				actualDateTotal+=212;
+				
+			break;
+			
+			case 9:
+				
+				actualDateTotal+=243;
+				
+			break;
+			
+			case 10:
+				
+				actualDateTotal+=273;
+				
+			break;
+			
+			case 11:
+				
+				actualDateTotal+=304;
+				
+			break;
+			
+			case 12:
+				
+				actualDateTotal+=334;
+				
+			break;
+			
+			default:
+				
+				actualDateTotal+=0;
+				
+			break;
+			
+		}
+		//...
+		
+		if( (dateTotal >= actualDateTotal) && (dateTotal <= actualDateTotal+7) ){
+			
+			truth=true;
+			
+		}
+		
+		return truth;
+		
+	}
+	
+	/**
+	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+	*pre: The client, a pet and the record(0) was created before.
+	*post: The address and /or phone number of the client is updated.
+	*@param The new address of the client. This param could be empty.
+	*@param The new phone number of the client. This param could be empty.
+	*/
+	public void changeAddressAndPhone(String ownerAddress, int ownerPhone){
+		
+		if(!ownerAddress.equals("")){
+			
+			this.ownerAddress=ownerAddress;
+			
+		}
+		if(ownerPhone!=0){
+			
+			this.ownerPhone=ownerPhone;
+			
+		}
+		
+	}
+	
+	//Adds
+	public void addMedicines(Medicine medicine){
+		
+		this.medicines.add(medicine);
+		
+	}
+	
+	/**
+	*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: New notes were added to the possible diagnostic in the patient clinic story.
+	*@param The notes of possible diagnostic. This param must be not null.
+	*/
+	public void addDiagnostic(String diagnostic){
+		
+		if(!diagnostic.equals("")){
+			
+			this.diagnostic+=". "+diagnostic;
+			
+		}
+		
+	}
+	
+	/**
+	*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: A new symptom were added to the patient clinic story.
+	*@param The new symptom presented. This param must be not null.
+	*/
+	public void addSymptom(String symptom){
+		
+		if(!symptom.equals("")){
+			
+			this.symptom+=". "+symptom;
+			
+		}
+		
+	}
+	
 	//Gets
 	public boolean getStatus(){
 		
@@ -506,6 +762,12 @@ public class Record{
 		
 	}
 	
+	public String getPetId(){
+		
+		return petId;
+		
+	}
+	
 	public char getPetType(){
 		
 		return petType;
@@ -522,6 +784,12 @@ public class Record{
 		
 		return petWeight;
 		
+	}
+	
+	public double getPetHeight(){
+		
+		return petHeight;
+		
 	}//...
 	
 	public Date getDateIn(){
@@ -536,9 +804,9 @@ public class Record{
 		
 	}
 	
-	public ArrayList<Medicine> getMedicine(){
+	public ArrayList<Medicine> getMedicines(){
 		
-		return medicine;
+		return medicines;
 		
 	}
 	
@@ -591,6 +859,12 @@ public class Record{
 		
 	}
 	
+	public void setPetId(String petId){
+		
+		this.petId=petId;
+		
+	}
+	
 	public void setPetType(char petType){
 		
 		this.petType=petType;
@@ -607,6 +881,12 @@ public class Record{
 		
 		this.petWeight=petWeight;
 		
+	}
+	
+	public void setPetHeight(double petHeight){
+		
+		this.petHeight=petHeight;
+		
 	}//...
 	
 	public void setDateIn(Date dateIn){
@@ -621,9 +901,9 @@ public class Record{
 		
 	}
 	
-	public void setMedicine(ArrayList<Medicine> medicine){
+	public void setMedicines(ArrayList<Medicine> medicines){
 		
-		this.medicine=medicine;
+		this.medicines=medicines;
 		
 	}
 	

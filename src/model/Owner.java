@@ -8,7 +8,7 @@ public class Owner{
 	private String id;
 	private String address;
 	private int phone;
-	private ArrayList<Pet> pet;//###
+	private ArrayList<Pet> pets;//###
 	
 	//Constructor
 	public Owner(String name, String id, String address, int phone, Pet pet){
@@ -18,19 +18,42 @@ public class Owner{
 		this.address=address;
 		this.phone=phone;
 		
-		this.pet=new ArrayList<Pet>();//###
+		this.pets=new ArrayList<Pet>();//###
 		
-		this.pet.add(pet);//###
+		this.pets.add(pet);//###
 		
 	}
+	
 	//Do
 	public String createPet(Pet pet){
 		
 		String message="Se a creado la mascota exitosamente";
 		
-		this.pet.add(pet);
+		this.pets.add(pet);
 		
 		return message;
+		
+	}
+	
+	/**
+	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+	*pre: The client was created before.
+	*post: The address and /or phone number of the client is updated.
+	*@param The new address of the client. This param could be empty.
+	*@param The new phone number of the client. This param could be empty.
+	*/
+	public void changeAddressAndPhone(String address, int phone){
+		
+		if(!address.equals("")){
+			
+			this.address=address;
+			
+		}
+		if(phone!=0){
+			
+			this.phone=phone;
+			
+		}
 		
 	}
 	
@@ -59,9 +82,9 @@ public class Owner{
 		
 	}
 	
-	public ArrayList<Pet> getPet(){
+	public ArrayList<Pet> getPets(){
 		
-		return pet;
+		return pets;
 		
 	}
 	
@@ -90,9 +113,9 @@ public class Owner{
 		
 	}
 	
-	public void setPet(ArrayList<Pet> pet){
+	public void setPets(ArrayList<Pet> pets){
 		
-		this.pet=pet;
+		this.pets=pets;
 		
 	}
 	

@@ -6,7 +6,7 @@ public class Medicine{
 	private String name;
 	private String dose;
 	private double periodicity;
-	private double price;//!!!
+	private double price;
 	
 	//Constructor
 	public Medicine(String name, String dose, double periodicity, double price){

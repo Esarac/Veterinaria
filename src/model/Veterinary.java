@@ -8,21 +8,24 @@ public class Veterinary{
 	
 	//Atributes
 	private String name;
-	private Room[] room;//###
-	private double totalMoney;//!!!
-	private ArrayList<Owner> owner;//###
+	private Room[] rooms;//###
+	private double totalHospitalizationMoney;//!!!
+	private ArrayList<Owner> owners;//###
+	private ArrayList<Service> services;
 	
 	//Constructor
 	public Veterinary(String name){
 		
 		this.name=name;
-		this.totalMoney=0;
+		this.totalHospitalizationMoney=0;
 		
-		this.room=new Room[ROOM_QUANTITY];//###
+		this.rooms=new Room[ROOM_QUANTITY];//###
 		
-		this.owner=new ArrayList<Owner>();
+		this.owners=new ArrayList<Owner>();
+		this.services=new ArrayList<Service>();
 		
 	}
+	
 	//Menu
 	public String showMenu(){
 		
@@ -41,7 +44,18 @@ public class Veterinary{
 		message+="\n 9.Consultar datos del cliente a traves de la mascota";
 		message+="\n 10.Consultar datos del cliente a traves del nombre del cliente";
 		message+="\n 11.Total de ingresos por hospitalizaciones";
-		message+="\n 12.Salir";
+		message+="\n 12.Mostrar el IMC de una mascota";
+		message+="\n 13.Actualizar datos de un cliente";
+		message+="\n 14.Anadir medicina a una mascota hospitalizada";
+		message+="\n 15.Anadir diagnostico a una mascota hospitalizada";
+		message+="\n 16.Anadir sintoma a una mascota hospitalizada";
+		message+="\n 17.Registrar un servicio";
+		message+="\n 18.Total de ingresos en un servicio especifico";
+		message+="\n 19.Mostrar el promedio de ingreso de los servicios";
+		message+="\n 20.Mostrar el promedio de ingreso prestados en una semana";
+		message+="\n 21.Mostrar los servicios prestados en un rango de tiempo";
+		message+="\n 22.Total de ingresos de la veterinaria";
+		message+="\n 23.Salir";
 		message+="\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		message+="\n~";
 		
@@ -49,48 +63,48 @@ public class Veterinary{
 		
 	}
 	
-	public String showRoom(boolean empty){
+	public String showRoomMenu(boolean empty){
 		
 		String message="\nElegir el mini cuarto";
 		
 		if(empty){
 			
-			if(room[0].getPet()==null){
+			if(rooms[0].getPet()==null){
 				
 				message+="\n 1.Mini Cuarto 1";
 				
 			}
-			if(room[1].getPet()==null){
+			if(rooms[1].getPet()==null){
 				
 				message+="\n 2.Mini Cuarto 2";
 				
 			}
-			if(room[2].getPet()==null){
+			if(rooms[2].getPet()==null){
 				
 				message+="\n 3.Mini Cuarto 3";
 				
 			}
-			if(room[3].getPet()==null){
+			if(rooms[3].getPet()==null){
 				
 				message+="\n 4.Mini Cuarto 4";
 				
 			}
-			if(room[4].getPet()==null){
+			if(rooms[4].getPet()==null){
 				
 				message+="\n 5.Mini Cuarto 5";
 				
 			}
-			if(room[5].getPet()==null){
+			if(rooms[5].getPet()==null){
 				
 				message+="\n 6.Mini Cuarto 6";
 				
 			}
-			if(room[6].getPet()==null){
+			if(rooms[6].getPet()==null){
 				
 				message+="\n 7.Mini Cuarto 7";
 				
 			}
-			if(room[7].getPet()==null){
+			if(rooms[7].getPet()==null){
 				
 				message+="\n 8.Mini Cuarto 8";
 				
@@ -99,44 +113,44 @@ public class Veterinary{
 		}
 		else{
 			
-			if(room[0].getPet()!=null){
+			if(rooms[0].getPet()!=null){
 				
-				message+="\n 1.Mini Cuarto 1 ("+room[0].getPet().getName()+")";
-				
-			}
-			if(room[1].getPet()!=null){
-				
-				message+="\n 2.Mini Cuarto 2 ("+room[1].getPet().getName()+")";
+				message+="\n 1.Mini Cuarto 1 ("+rooms[0].getPet().getName()+")";
 				
 			}
-			if(room[2].getPet()!=null){
+			if(rooms[1].getPet()!=null){
 				
-				message+="\n 3.Mini Cuarto 3 ("+room[2].getPet().getName()+")";
-				
-			}
-			if(room[3].getPet()!=null){
-				
-				message+="\n 4.Mini Cuarto 4 ("+room[3].getPet().getName()+")";
+				message+="\n 2.Mini Cuarto 2 ("+rooms[1].getPet().getName()+")";
 				
 			}
-			if(room[4].getPet()!=null){
+			if(rooms[2].getPet()!=null){
 				
-				message+="\n 5.Mini Cuarto 5 ("+room[4].getPet().getName()+")";
-				
-			}
-			if(room[5].getPet()!=null){
-				
-				message+="\n 6.Mini Cuarto 6 ("+room[5].getPet().getName()+")";
+				message+="\n 3.Mini Cuarto 3 ("+rooms[2].getPet().getName()+")";
 				
 			}
-			if(room[6].getPet()!=null){
+			if(rooms[3].getPet()!=null){
 				
-				message+="\n 7.Mini Cuarto 7 ("+room[6].getPet().getName()+")";
+				message+="\n 4.Mini Cuarto 4 ("+rooms[3].getPet().getName()+")";
 				
 			}
-			if(room[7].getPet()!=null){
+			if(rooms[4].getPet()!=null){
 				
-				message+="\n 8.Mini Cuarto 8 ("+room[7].getPet().getName()+")";
+				message+="\n 5.Mini Cuarto 5 ("+rooms[4].getPet().getName()+")";
+				
+			}
+			if(rooms[5].getPet()!=null){
+				
+				message+="\n 6.Mini Cuarto 6 ("+rooms[5].getPet().getName()+")";
+				
+			}
+			if(rooms[6].getPet()!=null){
+				
+				message+="\n 7.Mini Cuarto 7 ("+rooms[6].getPet().getName()+")";
+				
+			}
+			if(rooms[7].getPet()!=null){
+				
+				message+="\n 8.Mini Cuarto 8 ("+rooms[7].getPet().getName()+")";
 				
 			}
 			
@@ -147,12 +161,20 @@ public class Veterinary{
 		
 	}
 	
+	public String showServiceTypeMenu(){
+		
+		String menu="\nElije el tipo de servicio:\n 1.Bano de mascotas en la veterinaria\n 2.Bano de mascotas a domicilio\n 3.Corte de Unas\n 4.Profilaxis dental \n 5.Aplicacion de vacunas\n~";
+		
+		return menu;
+		
+	}
+	
 	//Do
 	public boolean emptyRoom(int roomNumber){
 		
 		boolean empty=false;
 		
-		if(room[roomNumber].getPet()==null){
+		if(rooms[roomNumber].getPet()==null){
 			
 			empty=true;
 			
@@ -167,41 +189,41 @@ public class Veterinary{
 		
 	}
 	
-	public String createOwner(String ownerName, String ownerId, String ownerAddress, int ownerPhone, String petName, char petType, int petAge, double petWeight, int dayIn, int monthIn, int yearIn){
+	public String createOwner(String ownerName, String ownerId, String ownerAddress, int ownerPhone, String petName, String petId, char petType, int petAge, double petWeight, double petHeight, int dayIn, int monthIn, int yearIn){
 		
 		String message="Se a creado el usuario exitosamente";
 		
 		Date petDateIn=new Date(dayIn, monthIn, yearIn);
 		
-		Record petRecord=new Record(false, "", "", petDateIn, ownerName, ownerId, ownerAddress, ownerPhone, petName, petType, petAge, petWeight);
-		Pet pet=new Pet(petName, petType, petAge, petWeight, petRecord);
+		Record petRecord=new Record(false, "", "", petDateIn, ownerName, ownerId, ownerAddress, ownerPhone, petName, petId, petType, petAge, petWeight, petHeight);
+		Pet pet=new Pet(petName, petId, petType, petAge, petWeight, petHeight, petRecord);
 		
 		Owner profile=new Owner(ownerName, ownerId, ownerAddress, ownerPhone, pet);
-		owner.add(profile);
+		owners.add(profile);
 		
 		return message;
 		
-	}//R1
+	}//R1*
 	
-	public String createPet(String ownerId, String name, char type, int age, double weight, int dayIn, int monthIn, int yearIn){
+	public String createPet(String ownerId, String name, String id, char type, int age, double weight, double height, int dayIn, int monthIn, int yearIn){
 		
 		String message="No se encontro el usuario";
 		
 		Date dateIn=new Date(dayIn, monthIn, yearIn);
 		
-		int ownerSize=owner.size();
+		int ownerSize=owners.size();
 		
 		for(int i=0; i<ownerSize; i++){
 			
-			String ownerIdI=owner.get(i).getId();
+			String ownerIdI=owners.get(i).getId();
 			
 			if(ownerIdI.equals(ownerId)){
 				
-				Record record=new Record(false, "", "", dateIn, owner.get(i).getName(), owner.get(i).getId(), owner.get(i).getAddress(), owner.get(i).getPhone(), name, type, age, weight);
+				Record record=new Record(false, "", "", dateIn, owners.get(i).getName(), owners.get(i).getId(), owners.get(i).getAddress(), owners.get(i).getPhone(), name, id, type, age, weight, height);
 				
-				Pet pet=new Pet(name, type, age, weight, record);
+				Pet pet=new Pet(name, id, type, age, weight, height, record);
 				
-				message=owner.get(i).createPet(pet);
+				message=owners.get(i).createPet(pet);
 				
 			}
 			
@@ -209,31 +231,31 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R2
+	}//R2*
 	
 	public String hospitalizate(String ownerId, String petName, int roomNumber){
 		
 		String message="No se encontro al dueno o a la mascota digitada";
 		
-		int ownerSize=owner.size();
+		int ownerSize=owners.size();
 		
 		Pet profile=null;
 		
 		for(int i=0; i<ownerSize; i++){
 			
-			String ownerIdI=owner.get(i).getId();
+			String ownerIdI=owners.get(i).getId();
 			
 			if(ownerIdI.equals(ownerId)){
 				
-				int petSize=owner.get(i).getPet().size();
+				int petSize=owners.get(i).getPets().size();
 				
 				for(int j=0; j<petSize; j++){
 					
-					String petNameJ=owner.get(i).getPet().get(j).getName();
+					String petNameJ=owners.get(i).getPets().get(j).getName();
 					
 					if(petNameJ.equals(petName)){
 						
-						profile=owner.get(i).getPet().get(j);
+						profile=owners.get(i).getPets().get(j);
 						message="Se ha hospitalizado la mascota";
 						
 					}
@@ -246,7 +268,7 @@ public class Veterinary{
 		
 		if(emptyRoom(roomNumber-1)){
 			
-			room[roomNumber-1].setPet(profile);
+			rooms[roomNumber-1].setPet(profile);
 			
 		}
 		else{
@@ -257,7 +279,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R3
+	}//R3*
 	
 	public String createRecord(String symptom, String diagnostic, int dayIn, int monthIn, int yearIn, int roomNumber){
 		
@@ -267,19 +289,7 @@ public class Veterinary{
 		
 		if(!emptyRoom(roomNumber-1)){
 			
-			String ownerName=room[roomNumber-1].getPet().getRecord().get(0).getOwnerName();
-			String ownerId=room[roomNumber-1].getPet().getRecord().get(0).getOwnerId();
-			String ownerAddress=room[roomNumber-1].getPet().getRecord().get(0).getOwnerAddress();
-			int ownerPhone=room[roomNumber-1].getPet().getRecord().get(0).getOwnerPhone();
-			
-			String petName=room[roomNumber-1].getPet().getRecord().get(0).getPetName();
-			char petType=room[roomNumber-1].getPet().getRecord().get(0).getPetType();
-			int petAge=room[roomNumber-1].getPet().getRecord().get(0).getPetAge();
-			double petWeight=room[roomNumber-1].getPet().getRecord().get(0).getPetWeight();
-			
-			Record record=new Record(true, symptom, diagnostic, dateIn, ownerName, ownerId, ownerAddress, ownerPhone, petName, petType, petAge, petWeight);
-			
-			room[roomNumber-1].setActualRecord(record);
+			rooms[roomNumber-1].createRecord(symptom, diagnostic, dateIn);
 			
 		}
 		else{
@@ -290,34 +300,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R3
-	
-	public String addMedicine(String name, String dose, double periodicity, double price, int roomNumber){
-		
-		String message="Se ha anadido una medicina a la historia clinica actual";
-		
-		if(room[roomNumber-1].getActualRecord()!=null){
-			
-			ArrayList<Medicine> newMedicine=room[roomNumber-1].getActualRecord().getMedicine();
-			Medicine medicine=new Medicine(name, dose, periodicity, price);
-			newMedicine.add(medicine);
-		
-			Record newRecord=room[roomNumber-1].getActualRecord();
-			newRecord.setMedicine(newMedicine);
-			
-			room[roomNumber-1].setActualRecord(newRecord);
-			
-		}
-		else{
-			
-			message="No se pudo anadir la medicina, porque no existe la historia clinica";
-			
-		}
-		
-		return message;
-		
-		
-	}//R3
+	}//R3*
 	
 	public String showEmptyRooms(){
 		
@@ -341,7 +324,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R4
+	}//R4*
 	
 	public String showPetRoomNumber(String petName){
 		
@@ -350,13 +333,13 @@ public class Veterinary{
 		
 		for(int i=0; i<ROOM_QUANTITY; i++){
 			
-			if(room[i].getPet()!=null){
+			if(rooms[i].getPet()!=null){
 				
-				String petNameI=room[i].getPet().getName();
+				String petNameI=rooms[i].getPet().getName();
 				
 				if(petNameI.equals(petName)){
 					
-					message+=" "+room[i].getNumber();
+					message+=" "+rooms[i].getNumber();
 					
 				}
 				
@@ -371,7 +354,7 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R5
+	}//R5*
 	
 	public String showAllActualRecord(){
 		
@@ -380,9 +363,9 @@ public class Veterinary{
 		
 		for(int i=0; i<ROOM_QUANTITY; i++){
 			
-			if(room[i].getActualRecord()!=null){
+			if(rooms[i].getActualRecord()!=null){
 				
-				message+=room[i].getActualRecord().printRecord();
+				message+=rooms[i].getActualRecord().printRecord();
 				
 			}
 			
@@ -395,36 +378,35 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R6
+	}//R6*
 	
 	public String showPetRecords(String id, String name){
 		
-		String firstMessage="Historias medicas de la mascota "+name;
 		String message="No se encontro a la mascota";
 		
-		int ownerSize=owner.size();
+		int ownerSize=owners.size();
 		
 		for(int i=0; i<ownerSize; i++){
 			
-			String ownerId=owner.get(i).getId();
+			String ownerId=owners.get(i).getId();
 			
 			if(ownerId.equals(id)){
 				
-				int petSize=owner.get(i).getPet().size();
+				int petSize=owners.get(i).getPets().size();
 				
 				for(int j=0; j<petSize;j++){
 					
-					String petName=owner.get(i).getPet().get(j).getName();
+					String petName=owners.get(i).getPets().get(j).getName();
 					
 					if(petName.equals(name)){
 						
 						message="Historias medicas de la mascota "+name;
 						
-						int recordSize=owner.get(i).getPet().get(j).getRecord().size();
+						int recordSize=owners.get(i).getPets().get(j).getRecords().size();
 						
 						for(int l=1; l<recordSize; l++){
 							
-							message+="\n"+owner.get(i).getPet().get(j).getRecord().get(l).printRecord();
+							message+="\n"+owners.get(i).getPets().get(j).getRecords().get(l).printRecord();
 							
 						}
 						
@@ -435,7 +417,7 @@ public class Veterinary{
 			}
 			
 		}
-		if(message.equals(firstMessage)){
+		if(message.equals("Historias medicas de la mascota "+name)){
 			
 			message="La mascota no tiene historias clinicas";
 			
@@ -443,47 +425,59 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R7
+	}//R7*
 	
 	public String dischargePet(int roomNumber, int dayOut, int monthOut, int yearOut){
 		
 		String message="Este cuarto esta vacio";
+		boolean run=true;
 		
-		if(!emptyRoom(roomNumber-1)){
+		while(run){
 			
-			int ownerSize=owner.size();
-			
-			for(int i=0; i<ownerSize; i++){
+			if(!emptyRoom(roomNumber-1)){
 				
-				String ownerId=owner.get(i).getId();
+				int ownerSize=owners.size();
 				
-				if(ownerId.equals(room[roomNumber-1].getActualRecord().getOwnerId())){
+				for(int i=0; i<ownerSize; i++){
 					
-					int petSize=owner.get(i).getPet().size();
+					String ownerId=owners.get(i).getId();
 					
-					for(int j=0; j<petSize;j++){
+					if(rooms[roomNumber-1].getActualRecord()!=null){
 						
-						String petName=owner.get(i).getPet().get(j).getName();
-						
-						if(petName.equals(room[roomNumber-1].getPet().getName())){
+						if(ownerId.equals(rooms[roomNumber-1].getActualRecord().getOwnerId())){
 							
-							Date dateOut=new Date(dayOut, monthOut, yearOut);
+							int petSize=owners.get(i).getPets().size();
 							
-							ArrayList<Record> newRecords=owner.get(i).getPet().get(j).getRecord();
-							
-							Record newRecord=room[roomNumber-1].getActualRecord();
-							newRecord.setStatus(false);
-							newRecord.setDateOut(dateOut);
-							newRecords.add(newRecord);
-							
-							room[roomNumber-1].setActualRecord(null);
-							room[roomNumber-1].setPet(null);
-							
-							owner.get(i).getPet().get(j).setRecord(newRecords);
-							
-							this.totalMoney+=newRecord.calculateHospitalizationCost();
-							
-							message="Son un total de $"+newRecord.calculateHospitalizationCost();
+							for(int j=0; j<petSize;j++){
+								
+								String petName=owners.get(i).getPets().get(j).getName();
+								
+								if(rooms[roomNumber-1].getPet()!=null){
+									
+									if(petName.equals(rooms[roomNumber-1].getPet().getName())){
+										
+										Date dateOut=new Date(dayOut, monthOut, yearOut);
+										
+										Record newRecord=rooms[roomNumber-1].getActualRecord();
+										newRecord.setStatus(false);
+										newRecord.setDateOut(dateOut);
+										
+										rooms[roomNumber-1].setActualRecord(null);
+										rooms[roomNumber-1].setPet(null);
+										
+										owners.get(i).getPets().get(j).addRecords(newRecord);
+										
+										this.totalHospitalizationMoney+=newRecord.calculateHospitalizationCost();
+										
+										message="Son un total de $"+newRecord.calculateHospitalizationCost();
+										
+										run=false;
+										
+									}
+									
+								}
+								
+							}
 							
 						}
 						
@@ -497,26 +491,26 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R8
+	}//R8*
 	
 	public String showOwnerDataPet(String name){
 		
 		String firstMessage="";
 		String message="";
 		
-		int ownerSize=owner.size();
+		int ownerSize=owners.size();
 		
 		for(int i=0; i<ownerSize; i++){
 			
-			int petSize=owner.get(i).getPet().size();
+			int petSize=owners.get(i).getPets().size();
 			
 			for(int j=0; j<petSize; j++){
 				
-				String petName=owner.get(i).getPet().get(j).getName();
+				String petName=owners.get(i).getPets().get(j).getName();
 				
 				if(petName.equals(name)){
 					
-					message+=owner.get(i).getPet().get(j).getRecord().get(0).showOwnerData();
+					message+=owners.get(i).getPets().get(j).getRecords().get(0).showOwnerData();
 					
 				}
 				
@@ -531,22 +525,22 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R9
+	}//R9*
 	
 	public String showOwnerDataOwner(String name){
 		
 		String firstMessage="";
 		String message="";
 		
-		int ownerSize=owner.size();
+		int ownerSize=owners.size();
 		
 		for(int i=0; i<ownerSize; i++){
 			
-			String ownerName=owner.get(i).getName();
+			String ownerName=owners.get(i).getName();
 			
 			if(ownerName.equals(name)){
 				
-				message+=owner.get(i).getPet().get(0).getRecord().get(0).showOwnerData();;
+				message+=owners.get(i).getPets().get(0).getRecords().get(0).showOwnerData();;
 				
 			}
 			
@@ -559,7 +553,319 @@ public class Veterinary{
 		
 		return message;
 		
-	}//R10
+	}//R10*
+	
+	public String showPetBmi(String id, String name){
+		
+		String message="No se encontro a la mascota";
+		
+		int ownerSize=owners.size();
+		
+		for(int i=0; i<ownerSize; i++){
+			
+			String ownerId=owners.get(i).getId();
+			
+			if(ownerId.equals(id)){
+				
+				int petSize=owners.get(i).getPets().size();
+				
+				for(int j=0; j<petSize;j++){
+					
+					String petName=owners.get(i).getPets().get(j).getName();
+					
+					if(petName.equals(name)){
+						
+						message="IMC de "+name+ ": "+owners.get(i).getPets().get(j).calculateBmi();
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		return message;
+		
+	}//R12*
+	
+	public String changeOwnerData(String id, String address, int phone){
+		
+		String message="No se encontro al dueno";
+		
+		int ownerSize=owners.size();
+		
+		for(int i=0; i<ownerSize; i++){
+			
+			String ownerId=owners.get(i).getId();
+			
+			if(ownerId.equals(id)){
+				
+				owners.get(i).changeAddressAndPhone(address, phone);
+				
+				message="Se han cambiado los datos del cliente";
+				
+				int petSize=owners.get(i).getPets().size();
+				
+				for(int j=0; j<petSize;j++){
+					
+					owners.get(i).getPets().get(j).getRecords().get(0).changeAddressAndPhone(address, phone);
+					
+				}
+				
+			}
+			
+		}
+		
+		return message;
+		
+	}//R13*
+	
+	public String addMedicine(String name, String dose, double periodicity, double price, int roomNumber){
+		
+		String message="";
+		
+		if(rooms[roomNumber-1].getActualRecord()!=null){
+			
+			message=rooms[roomNumber-1].addMedicine(name, dose, periodicity, price);
+			
+		}
+		else{
+			
+			message="No se pudo anadir la medicina, porque no existe la historia clinica";
+			
+		}
+		
+		return message;
+		
+		
+	}//R14*
+	
+	public String addDiagnostic(String diagnostic, int roomNumber){
+		
+		String message="Se ha anadido un diagnostico a la historia clinica actual";
+		
+		if(rooms[roomNumber-1].getActualRecord()!=null){
+			
+			rooms[roomNumber-1].getActualRecord().addDiagnostic(diagnostic);
+			
+		}
+		else{
+			
+			message="No se pudo anadir el diagnostico, porque no existe la historia clinica";
+			
+		}
+		
+		return message;
+		
+	}//R15*
+	
+	public String addSymptom(String symptom, int roomNumber){
+		
+		String message="Se ha anadido un sintoma a la historia clinica actual";
+		
+		if(rooms[roomNumber-1].getActualRecord()!=null){
+			
+			rooms[roomNumber-1].getActualRecord().addSymptom(symptom);
+			
+		}
+		else{
+			
+			message="No se pudo anadir el sintoma, porque no existe la historia clinica";
+			
+		}
+		
+		return message;
+		
+	}//R16*
+	
+	public String registerService(String type, String ownerId, String petName, int day, int month, int year){
+		
+		String message="No se encontro a la mascota o al cliente";
+		
+		Date date=new Date(day, month, year);
+		Service newService=null;
+		int serviceCost=0;
+		
+		if(type.equals(Service.SERVICE_TYPES[0])){
+			
+			serviceCost=20000;
+			
+		}
+		else if(type.equals(Service.SERVICE_TYPES[1])){
+			
+			serviceCost=30000;
+			
+		}
+		else if(type.equals(Service.SERVICE_TYPES[2])){
+			
+			serviceCost=8000;
+			
+		}
+		else if(type.equals(Service.SERVICE_TYPES[3])){
+			
+			serviceCost=12000;
+			
+		}
+		else if(type.equals(Service.SERVICE_TYPES[4])){
+			
+			serviceCost=45000;
+			
+		}
+		else {
+			
+			message="El servicio no existe";
+			
+		}
+		
+		
+		int ownerSize=owners.size();
+		
+		for(int i=0; i<ownerSize; i++){
+			
+			if(ownerId.equals(owners.get(i).getId())){
+				
+				int petSize=owners.get(i).getPets().size();
+				
+				for(int j=0; j<petSize;j++){
+					
+					if(petName.equals(owners.get(i).getPets().get(j).getName())){
+						
+						String petId=owners.get(i).getPets().get(j).getId();
+						newService=new Service(type, serviceCost, ownerId, petId, date);
+						services.add(newService);
+						
+						message="Se ha registrado el servicio \nCosto del servicio: "+serviceCost;
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		return message;
+		
+	}//RF17*
+	
+	public double calculateTotalServiceMoney(String type){
+		
+		double totalMoney=0;
+		
+		for(int i=0; i<services.size(); i++){
+			
+			if(type.equals( services.get(i).getType() )){
+				
+				totalMoney+=services.get(i).getPrice();
+				
+			}
+			
+		}
+		
+		return totalMoney;
+		
+	}//RF18*
+	
+	public double calculateServiceAverage(){
+		
+		double average=0;
+		
+		int servicesSize=services.size();
+		for(int i=0; i<servicesSize; i++){
+			
+			average+=services.get(i).getPrice();
+			
+		}
+		if(average!=0){
+			
+			average/=servicesSize;
+			
+		}
+		
+		return average;
+		
+	}//RF19*
+	
+	public double calculateWeekAverage(int day, int month, int year){
+		
+		double average=0;
+		int counter=0;
+		
+		Date firstDate=new Date(day, month, year);
+		
+		for(int i=0; i<services.size(); i++){
+			
+			if(services.get(i).itsOnTheWeek(firstDate)){
+				
+				counter++;
+				average+=services.get(i).getPrice();
+				
+			}
+			
+		}
+		for(int j=0;j<owners.size();j++){
+
+			for(int l=0;l<owners.get(j).getPets().size();l++){
+
+				for(int k=1;k<owners.get(j).getPets().get(l).getRecords().size();k++){
+
+					if(owners.get(j).getPets().get(l).getRecords().get(k).itsOnTheWeek(firstDate)){
+
+						counter++;
+						average+=owners.get(j).getPets().get(l).getRecords().get(k).calculateHospitalizationCost();
+
+					}
+
+				}
+
+			}
+
+		}
+		if(counter!=0){
+			
+			average/=counter;
+			
+		}
+		
+		return average;
+		
+	}//RF20*
+	
+	public String ServiceTimeLapseReport(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear){
+		
+		String reports="";
+		
+		Date startDate=new Date(startDay, startMonth, startYear);
+		Date endDate=new Date(endDay, endMonth, endYear);
+		
+		for(int i=0; i<services.size(); i++){
+			
+			if(services.get(i).itsBetweenThisTimeLapse(startDate, endDate)){
+				
+				reports+=services.get(i).printReport();
+				
+			}
+			
+		}
+		
+		return reports;
+		
+	}//RF21*
+	
+	public double calculateTotalMoney(){
+		
+		double totalMoney=totalHospitalizationMoney;
+		
+		for(int i=0; i<services.size(); i++){
+			
+			totalMoney+=services.get(i).getPrice();
+			
+		}
+		
+		return totalMoney;
+		
+	}//RF22*
 	
 	//Gets
 	public String getName(){
@@ -568,23 +874,29 @@ public class Veterinary{
 		
 	}
 	
-	public Room getRoom(int n){
+	public Room getRooms(int n){
 		
-		return room[n];
-		
-	}
-	
-	public ArrayList<Owner> getOwner(){
-		
-		return owner;
+		return rooms[n];
 		
 	}
 	
-	public double getTotalMoney(){
+	public ArrayList<Owner> getOwners(){
 		
-		return totalMoney;
+		return owners;
 		
-	}//R11
+	}
+	
+	public double getTotalHospitalizationMoney(){
+		
+		return totalHospitalizationMoney;
+		
+	}//R11*
+	
+	public ArrayList<Service> getServices(){
+		
+		return services;
+		
+	}
 	
 	//Sets
 	public void setName(String name){
@@ -593,21 +905,27 @@ public class Veterinary{
 		
 	}
 	
-	public void setRoom(int n, Room room){
+	public void setRooms(int n, Room room){
 		
-		this.room[n]=room;
-		
-	}
-	
-	public void setOwner(ArrayList<Owner> owner){
-		
-		this.owner=owner;
+		this.rooms[n]=room;
 		
 	}
 	
-	public void setTotalMoney(double totalMoney){
+	public void setOwners(ArrayList<Owner> owners){
 		
-		this.totalMoney=totalMoney;
+		this.owners=owners;
+		
+	}
+	
+	public void setTotalHospitalizationMoney(double totalHospitalizationMoney){
+		
+		this.totalHospitalizationMoney=totalHospitalizationMoney;
+		
+	}
+	
+	public void setServices(ArrayList<Service> services){
+		
+		this.services=services;
 		
 	}
 	
