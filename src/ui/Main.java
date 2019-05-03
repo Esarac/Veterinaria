@@ -571,7 +571,7 @@ public class Main{
 					int endYear=scanner.nextInt();
 					scanner.nextLine();
 					
-					System.out.print(veterinary.ServiceTimeLapseReport(startDay, startMonth, startYear, endDay, endMonth, endYear));
+					System.out.print(veterinary.serviceTimeLapseReport(startDay, startMonth, startYear, endDay, endMonth, endYear));
 					
 				break;
 				

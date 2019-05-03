@@ -832,7 +832,7 @@ public class Veterinary{
 		
 	}//RF20*
 	
-	public String ServiceTimeLapseReport(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear){
+	public String serviceTimeLapseReport(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear){
 		
 		String reports="";
 		

@@ -731,7 +731,6 @@ public class Record{
 		
 	}
 	
-	
 	public String getOwnerName(){//Owner
 		
 		return ownerName;

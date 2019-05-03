@@ -41,7 +41,7 @@ public class Service{
 		
 	}
 	
-	public boolean itsOnTheWeek(Date actualDate){
+	public boolean itsOnTheWeek(Date startDate){
 		
 		boolean truth=false;
 		
@@ -130,9 +130,9 @@ public class Service{
 		}
 		//...
 		
-		//actualDate
-		int actualDateTotal=(actualDate.getYear()*365)+(actualDate.getDay());
-		switch(actualDate.getMonth()){
+		//startDate
+		int actualDateTotal=(startDate.getYear()*365)+(startDate.getDay());
+		switch(startDate.getMonth()){
 			
 			case 1:
 				
